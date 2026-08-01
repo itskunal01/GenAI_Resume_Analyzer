@@ -4,5 +4,18 @@
     padding-inline: 1.5rem;
     padding-block: 0.75rem;
     border-radius:1rem;
+    coursor: pointer;
+
+
+    transition: all 0.3s ease-in-out;
+
+    &.primary-button{
+        background-color: #e90a76;
+        color: whitesmoke;
+    }
+
+    &:active{
+        transform: scale(0.9);
+    }
 
 }

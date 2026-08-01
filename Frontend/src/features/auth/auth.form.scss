@@ -5,7 +5,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+
 
 .form-container{
     min-width: 350px;
@@ -34,4 +34,16 @@ form{
         padding-block: 0.75rem;
         border-radius: 0.75rem;
     }
+
+    
+
+
+}
+
+a{
+        color:#e90a76;
+        text-decoration: none;
+    }
+
+
 }
