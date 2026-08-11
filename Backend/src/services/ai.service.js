@@ -9,6 +9,8 @@ const ai = new GoogleGenAI({
 });
 
 
+ 
+
 const interviewReportSchema = z.object({
 
     matchScore: z.number().describe("The match score between the job description and the candidate's resume and self description"),
@@ -53,12 +55,12 @@ async function generateInterviewReport({jobDescription, resume, selfDescription}
         contents: prompt,
         config:{
             responseMimeType: "application/json",
-            jsonSchema: zodToJsonSchema(interviewReportSchema)
+            responseSchema: zodToJsonSchema(interviewReportSchema)
         }
     }) 
 
 
-    console.log(JSON.parse(response.text));
+    return JSON.parse(response.text);
 
 }
 

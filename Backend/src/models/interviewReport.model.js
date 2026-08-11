@@ -129,13 +129,16 @@ const interviewReportSchema = new mongoose.Schema({
         type:Number, 
         min:0,
         max:100,
-        required:[true, "Match score is required"]
     }, 
     
     technicalQuestions : [technicalQuestionSchema],
     behavioralQuestions : [behavioralQuestionSchema],
     skillGaps : [skillGapSchema],
-    preparationPlan : [preparationPlanSchema]
+    preparationPlan : [preparationPlanSchema],
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"ref"
+    }
 },{
     timestamps:true
 
