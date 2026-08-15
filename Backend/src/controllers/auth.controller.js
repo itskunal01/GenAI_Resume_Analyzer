@@ -70,7 +70,7 @@ async function registerUserController(req,res){
 async function loginUserController(req,res){
     const {email,password}=req.body
 
-    const user = await userModel.findOne({email})
+    const user = await userModel.findOne({email:email})
 
     if (!user){
         return res.status(400).json({
