@@ -63,9 +63,20 @@ async function getInterviewReportByIdController(req,res){
 
 }
 
+/**
+ * @description Controller to get all interview reports of logged in user.
+ */
+
+async function getAllInterviewReportsController(req,res){
+    const interviewReports = (await interviewReportModel.find({user:req.user.id})).sort({createdAt : -1}).select("-resume -selfDescription -jobDescription -_v -technicalQuestions -behavioralQuestions -strategicAdvice -skillGaps -preparationPlan")
+
+    req.status(200).json({
+        message:"interview reports fetched successfully.",
+        interviewReports
+    })
+
+}
 
 
 
-
-
-module.exports = {generateInterviewReportController,getInterviewReportByIdController}
+module.exports = {generateInterviewReportController,getInterviewReportByIdController,getAllInterviewReportsController}
