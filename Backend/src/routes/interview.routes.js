@@ -18,7 +18,7 @@ interviewRouter.post("/",authMiddleware.authUser,upload.single("resume"),intervi
  * @description get interview report by interviewId
  * @access private
  */
-interviewRouter.get("/report/:interviewId",authMiddleware.authUser,interviewCOntroller.getInterview)
+interviewRouter.get("/report/:interviewId",authMiddleware.authUser,interviewController.getInterviewReportByIdController)
 
 
 /**
@@ -27,7 +27,7 @@ interviewRouter.get("/report/:interviewId",authMiddleware.authUser,interviewCOnt
  * @access private
  */
 
-interviewRouter.get("/",authMiddleware.authUser,interviewController.getAllInterview)
+interviewRouter.get("/",authMiddleware.authUser,interviewController.getAllInterviewReportsController)
 
 
 

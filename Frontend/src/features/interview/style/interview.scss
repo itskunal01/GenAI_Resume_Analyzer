@@ -1,0 +1,294 @@
+.interview {
+  width: 100%;
+  min-height: 100dvh;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+
+  background: #0b0e13;
+
+  color: #f4f4f5;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  overflow: hidden;
+
+  .interview-layout {
+    width: min(1080px, 100%);
+    height: min(720px, calc(100dvh - 80px));
+
+    min-height: 500px;
+
+    display: grid;
+    grid-template-columns: 195px minmax(0, 1fr) 265px;
+
+    background: #0f1115;
+
+    border: 1px solid #9da1a8;
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+
+  /* ========================================================
+     LEFT SIDEBAR
+     ======================================================== */
+
+  .interview-sidebar {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    border-right: 1px solid #9da1a8;
+
+    background: #0f1115;
+
+    nav {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 22px;
+
+      padding: 0 18px;
+    }
+
+    .nav-item {
+      width: 100%;
+
+      padding: 0;
+
+      border: none;
+
+      background: transparent;
+
+      color: #a8abb2;
+
+      text-align: left;
+
+      font-family: inherit;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      line-height: 20px;
+
+      cursor: pointer;
+
+      transition:
+        color 0.15s ease,
+        transform 0.15s ease;
+
+      &:hover {
+        color: #ffffff;
+
+        transform: translateX(3px);
+      }
+
+      &.active {
+        color: #f0f0f2;
+      }
+    }
+  }
+
+
+  /* ========================================================
+     CENTER CONTENT
+     ======================================================== */
+
+  .interview-content {
+    min-width: 0;
+
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #0f1115;
+
+    .main-content {
+      color: #c7c9ce;
+
+      font-size: 18px;
+      font-weight: 600;
+
+      line-height: 1.5;
+
+      text-align: center;
+    }
+  }
+
+
+  /* ========================================================
+     RIGHT SIDEBAR
+     ======================================================== */
+
+  .skill-gaps {
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 64px 26px;
+
+    border-left: 1px solid #9da1a8;
+
+    background: #0f1115;
+
+    h3 {
+      margin: 0 0 18px;
+
+      color: #b8bbc1;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      line-height: 20px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+    .skill-tag {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 30px;
+
+      box-sizing: border-box;
+
+      padding: 5px 14px;
+
+      border: 1px solid #9da1a8;
+      border-radius: 7px;
+
+      background: #0d0f13;
+
+      color: #c5c7cb;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      line-height: 18px;
+
+      white-space: nowrap;
+    }
+  }
+
+
+  /* ========================================================
+     TABLET
+     ======================================================== */
+
+  @media (max-width: 850px) {
+    padding: 20px;
+
+    overflow-y: auto;
+
+    .interview-layout {
+      height: auto;
+
+      min-height: calc(100dvh - 40px);
+
+      grid-template-columns: 170px minmax(0, 1fr) 220px;
+
+      border-radius: 16px;
+    }
+
+    .skill-gaps {
+      padding: 40px 18px;
+    }
+  }
+
+
+  /* ========================================================
+     MOBILE
+     ======================================================== */
+
+  @media (max-width: 650px) {
+    align-items: flex-start;
+
+    padding: 12px;
+
+    overflow-y: auto;
+
+    .interview-layout {
+      min-height: calc(100dvh - 24px);
+
+      display: flex;
+      flex-direction: column;
+
+      border-radius: 14px;
+    }
+
+    .interview-sidebar {
+      height: auto;
+
+      min-height: auto;
+
+      border-right: none;
+      border-bottom: 1px solid #3a3e45;
+
+      nav {
+        padding: 18px;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: 14px;
+      }
+
+      .nav-item {
+        width: auto;
+
+        padding: 8px 0;
+
+        font-size: 13px;
+      }
+    }
+
+    .interview-content {
+      min-height: 350px;
+
+      padding: 30px 20px;
+    }
+
+    .skill-gaps {
+      height: auto;
+
+      min-height: 180px;
+
+      padding: 25px 20px;
+
+      border-left: none;
+      border-top: 1px solid #3a3e45;
+    }
+  }
+}
