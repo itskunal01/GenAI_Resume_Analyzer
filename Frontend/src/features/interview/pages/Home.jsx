@@ -1,7 +1,25 @@
-import React from "react";
+import React,{useState,useRef} from "react";
 import "../style/home.scss";
+import {useInterview} from "../hooks/useinterview.js"
+import {useNavigate} from 'react-router'
 
 const Home = () => {
+
+  const {loading, generateReport} = useInterview()
+  const [jobDesccription, setJobDescription] = useState("")
+  const [selfDescription, setSelfDescription] = useState("")
+  const resumeInputRef = useRef()
+
+  const navigate = useNavigate()
+
+  const handleGenerateReport = async () =>{
+    const resumeFile = resumeInputRef.current.files[0]
+    const data = await generateReport({jobDescription, selfDescription, resumeFile })
+    
+
+  }
+
+
   return (
     <main className="home">
       <h1>
@@ -19,6 +37,7 @@ const Home = () => {
           <label htmlFor="jobDescription">Job Description</label>
 
           <textarea
+            onChange={(e)=>{setJobDescription(e.target.value)}}
             name="jobDescription"
             id="jobDescription"
             placeholder={
@@ -42,6 +61,7 @@ const Home = () => {
             </label>
 
             <input
+              ref={resumeInputRef}
               hidden
               type="file"
               name="resume"
@@ -56,13 +76,16 @@ const Home = () => {
             </label>
 
             <textarea
+              onChange={(e)=>{setSelfDescription(e.target.value)}}
               name="selfDescription"
               id="selfDescription"
               placeholder="Briefly describe your experience, key skills, and years of experience if you don't have a resume handy..."
             />
           </div>
 
-          <button className="button primary-button" type="button">
+          <button 
+
+            className="button primary-button" type="button">
             Generate My Interview Strategy
           </button>
         </div>
