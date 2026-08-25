@@ -1,5 +1,4 @@
 import axios from "axios";
-import { jobDescription, selfDescription } from "../../../../../Backend/src/services/temp";
 
 const api = axios.create({
     baseURL: "http://localhost:3000",

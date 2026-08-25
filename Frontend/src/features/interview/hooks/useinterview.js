@@ -1,4 +1,4 @@
-import {getAllInterviewReports,generateInterviewReport,getInterviewReportById} from "../services/interview.api/"
+import {getAllInterviewReports,generateInterviewReport,getInterviewReportById} from "../services/interview.api"
 import {useContext} from "react";
 import {InterviewContext} from "../interview.context"
 

@@ -15,9 +15,18 @@ const Home = () => {
   const handleGenerateReport = async () =>{
     const resumeFile = resumeInputRef.current.files[0]
     const data = await generateReport({jobDescription, selfDescription, resumeFile })
-    
+    navigate('/interview/${data._id}')
 
   }
+
+  if(loading){
+    return(
+      <main className='loading-screen'>
+          <h1>Loading your Interview plan...</h1>
+      </main>
+    )
+  }
+
 
 
   return (
@@ -84,7 +93,7 @@ const Home = () => {
           </div>
 
           <button 
-
+            onClick={handleGenerateReport}
             className="button primary-button" type="button">
             Generate My Interview Strategy
           </button>
