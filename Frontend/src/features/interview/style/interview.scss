@@ -1,12 +1,14 @@
 .interview {
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
+  height: auto;
 
   padding: 24px;
 
   box-sizing: border-box;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   background:
     radial-gradient(
@@ -28,14 +30,20 @@
 
   .interview-dashboard {
     width: min(1600px, 100%);
-    height: 100%;
+    min-height: 100%;
+    height: auto;
 
     margin: auto;
 
     display: flex;
     flex-direction: column;
 
-    overflow: hidden;
+    /*
+      IMPORTANT:
+      Don't hide the dashboard's overflowing content.
+      The outer .interview page handles scrolling.
+    */
+    overflow: visible;
 
     border: 1px solid #27303b;
     border-radius: 20px;
@@ -164,9 +172,6 @@
      ========================================================= */
 
   .dashboard-body {
-    flex: 1;
-    min-height: 0;
-
     display: grid;
 
     grid-template-columns:
@@ -174,7 +179,13 @@
       minmax(0, 1fr)
       280px;
 
-    overflow: hidden;
+    /*
+      Allow the body to grow with its content.
+    */
+    flex: none;
+    min-height: 0;
+
+    overflow: visible;
   }
 
   /* =========================================================
@@ -341,7 +352,11 @@
 
     box-sizing: border-box;
 
-    overflow-y: auto;
+    /*
+      Removed internal scrolling.
+      The entire .interview page scrolls instead.
+    */
+    overflow: visible;
 
     scrollbar-width: thin;
     scrollbar-color: #323b47 transparent;
@@ -469,7 +484,10 @@
 
   .question-details {
     display: grid;
-    grid-template-columns: 0.9fr 1.4fr;
+
+    grid-template-columns:
+      0.9fr
+      1.4fr;
 
     gap: 12px;
   }
@@ -491,6 +509,7 @@
       font-weight: 800;
 
       letter-spacing: 0.8px;
+
       text-transform: uppercase;
     }
 
@@ -525,7 +544,9 @@
 
   .roadmap-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
     gap: 14px;
   }
@@ -595,11 +616,13 @@
       gap: 7px;
 
       margin: 0;
+
       padding-left: 16px;
 
       color: #949eab;
 
       font-size: 11px;
+
       line-height: 1.55;
 
       li::marker {
@@ -625,6 +648,11 @@
     border-left: 1px solid #27303b;
 
     background: #0d1117;
+
+    /*
+      Let this column grow naturally.
+    */
+    overflow: visible;
   }
 
   .skills-header {
@@ -653,6 +681,7 @@
       color: #7e8895;
 
       font-size: 11px;
+
       line-height: 1.6;
     }
   }
@@ -723,41 +752,203 @@
     }
   }
 
-.skills-tip {
-  flex-shrink: 0;
+  .skills-tip {
+    margin-top: auto;
 
-  margin-top: 16px;
+    padding: 16px;
 
-  padding: 16px;
+    border: 1px solid rgba(100, 132, 255, 0.18);
 
-  border: 1px solid rgba(100, 132, 255, 0.18);
-  border-radius: 10px;
+    border-radius: 10px;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(65, 112, 230, 0.11),
-      transparent
-    );
+    background:
+      linear-gradient(
+        135deg,
+        rgba(65, 112, 230, 0.11),
+        transparent
+      );
 
-  > span {
-    color: #81aaff;
+    > span {
+      color: #81aaff;
 
-    font-size: 9px;
-    font-weight: 800;
+      font-size: 9px;
+      font-weight: 800;
 
-    letter-spacing: 1px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin: 9px 0 0;
+
+      color: #99a4b3;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
   }
 
-  p {
-    margin: 9px 0 0;
+  /* =========================================================
+     PREPARATION PLAN
+     ========================================================= */
 
-    color: #99a4b3;
+  .preparation-plan {
+    /*
+      Keep the existing appearance/layout.
+      It now grows with its contents.
+    */
+    flex: none;
 
-    font-size: 11px;
-    line-height: 1.6;
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-top: 20px;
+
+    overflow: visible;
+
+    border-top: 1px solid #27303b;
+
+    border-bottom: 1px solid #27303b;
   }
-}
+
+  .preparation-plan-header {
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 16px 0 12px;
+
+    span {
+      color: #ed176e;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: 1.2px;
+    }
+
+    strong {
+      color: #e8ebef;
+
+      font-size: 14px;
+    }
+  }
+
+  /*
+    Preparation content is allowed to expand.
+    The page itself becomes scrollable.
+  */
+
+  .preparation-plan-scroll {
+    flex: none;
+
+    min-height: 0;
+
+    overflow: visible;
+
+    padding-right: 8px;
+
+    padding-bottom: 12px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+      #3a4552
+      transparent;
+  }
+
+  .preparation-item {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #202933;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .preparation-day {
+    flex-shrink: 0;
+
+    width: 34px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-top: 2px;
+
+    span {
+      color: #697481;
+
+      font-size: 7px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.8px;
+    }
+
+    strong {
+      margin-top: 3px;
+
+      color: #ed176e;
+
+      font-size: 18px;
+    }
+  }
+
+  .preparation-content {
+    min-width: 0;
+
+    h4 {
+      margin: 0 0 8px;
+
+      color: #d7dce2;
+
+      font-size: 11px;
+
+      font-weight: 650;
+
+      line-height: 1.45;
+    }
+
+    ul {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+
+      margin: 0;
+
+      padding-left: 14px;
+
+      color: #808b98;
+
+      font-size: 10px;
+
+      line-height: 1.5;
+
+      li::marker {
+        color: #ed176e;
+      }
+    }
+  }
+
   /* =========================================================
      RESPONSIVE
      ========================================================= */
@@ -785,36 +976,45 @@
 
   @media (max-width: 900px) {
     height: auto;
+
     min-height: 100dvh;
 
+    overflow-x: hidden;
     overflow-y: auto;
 
     .interview-dashboard {
       height: auto;
+
       min-height: calc(100dvh - 48px);
+
+      overflow: visible;
     }
 
     .dashboard-body {
-      grid-template-columns: 180px minmax(0, 1fr);
+      grid-template-columns:
+        180px
+        minmax(0, 1fr);
+
+      overflow: visible;
     }
 
- .skills-sidebar {
-  min-height: 0;
+    .skills-sidebar {
+      grid-column: 1 / -1;
 
-  display: flex;
-  flex-direction: column;
+      border-top: 1px solid #27303b;
 
-  padding: 30px 20px;
+      border-left: none;
 
-  box-sizing: border-box;
+      display: grid;
 
-  border-left: 1px solid #27303b;
+      grid-template-columns:
+        1fr
+        1fr;
 
-  background: #0d1117;
+      gap: 25px;
 
-  /* Prevent content from pushing outside screen */
-  overflow: hidden;
-}
+      overflow: visible;
+    }
 
     .skills-header {
       grid-column: 1 / -1;
@@ -832,10 +1032,13 @@
       min-height: calc(100dvh - 20px);
 
       border-radius: 14px;
+
+      overflow: visible;
     }
 
     .interview-header {
       align-items: flex-start;
+
       flex-direction: column;
 
       padding: 22px;
@@ -843,14 +1046,18 @@
 
     .dashboard-body {
       display: block;
+
+      overflow: visible;
     }
 
     .dashboard-navigation {
       border-right: none;
+
       border-bottom: 1px solid #27303b;
 
       nav {
         flex-direction: row;
+
         overflow-x: auto;
       }
 
@@ -867,6 +1074,8 @@
       min-height: 500px;
 
       padding: 20px;
+
+      overflow: visible;
     }
 
     .section-header {
@@ -878,6 +1087,8 @@
 
       padding: 20px;
 
+      overflow: visible;
+
       .skills-tip {
         margin-top: 20px;
       }
@@ -887,164 +1098,4 @@
       padding: 17px;
     }
   }
-
-  /* =========================================================
-   PREPARATION PLAN - RIGHT SIDEBAR
-   ========================================================= */
-
-.preparation-plan {
-  flex: 1;
-  min-height: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  margin-top: 20px;
-
-  overflow: hidden;
-
-  border-top: 1px solid #27303b;
-  border-bottom: 1px solid #27303b;
-}
-
-.preparation-plan-header {
-  flex-shrink: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 5px;
-
-  padding: 16px 0 12px;
-
-  span {
-    color: #ed176e;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    letter-spacing: 1.2px;
-  }
-
-  strong {
-    color: #e8ebef;
-
-    font-size: 14px;
-  }
-}
-
-/*
-  ONLY THIS PART SCROLLS
-*/
-
-.preparation-plan-scroll {
-  flex: 1;
-  min-height: 0;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  padding-right: 8px;
-  padding-bottom: 12px;
-
-  scrollbar-width: thin;
-  scrollbar-color: #3a4552 transparent;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #3a4552;
-
-    border-radius: 20px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #596574;
-  }
-}
-
-.preparation-item {
-  display: flex;
-
-  gap: 10px;
-
-  padding: 12px 0;
-
-  border-bottom: 1px solid #202933;
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.preparation-day {
-  flex-shrink: 0;
-
-  width: 34px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  padding-top: 2px;
-
-  span {
-    color: #697481;
-
-    font-size: 7px;
-    font-weight: 800;
-
-    letter-spacing: 0.8px;
-  }
-
-  strong {
-    margin-top: 3px;
-
-    color: #ed176e;
-
-    font-size: 18px;
-  }
-}
-
-.preparation-content {
-  min-width: 0;
-
-  h4 {
-    margin: 0 0 8px;
-
-    color: #d7dce2;
-
-    font-size: 11px;
-    font-weight: 650;
-
-    line-height: 1.45;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    margin: 0;
-    padding-left: 14px;
-
-    color: #808b98;
-
-    font-size: 10px;
-
-    line-height: 1.5;
-
-    li::marker {
-      color: #ed176e;
-    }
-  }
-}
-
 }

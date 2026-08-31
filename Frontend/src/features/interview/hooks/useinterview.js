@@ -1,10 +1,12 @@
 import {getAllInterviewReports,generateInterviewReport,getInterviewReportById} from "../services/interview.api"
-import {useContext} from "react";
+import {useContext,useEffect} from "react";
 import {InterviewContext} from "../interview.context"
-
+import {useParams} from "react-router"
 
 
 export const useInterview = ()=>{
+
+    const {interviewId} = useParams()
 
     const context = useContext(InterviewContext)
 
@@ -55,6 +57,15 @@ export const useInterview = ()=>{
             setLoading(false)
         }
     }
+
+
+    useEffect(()=>{
+        if (interviewId){
+            getReportById(interviewId)
+        } else {
+            getReports()
+        }
+    },[interviewId])
 
 
     return { loading, report, reports, generateReport, getReportById, getReports}
