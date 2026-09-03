@@ -33,29 +33,32 @@ export const useInterview = ()=>{
     const getReportById = async (interviewId) =>{
 
         setLoading(true)
-        try{
-            const response = await getInterviewReportById(interviewId)
+        let response = null
+        try {
+            response = await getInterviewReportById(interviewId)
             setReport(response.interviewReport)
-        }catch(error){
+        } catch (error) {
             console.log(error)
-        }finally{
+        } finally {
             setLoading(false)
         }
-
-
+        return response.interviewReport
     }
 
 
     const getReports = async()=>{
         setLoading(true)
-        try{
-            const response = await getAllInterviewReports()
+        let response = null
+        try {
+            response = await getAllInterviewReports()
             setReports(response.interviewReports)
-        }catch(error){
+        } catch (error) {
             console.log(error)
-        }finally{
+        } finally {
             setLoading(false)
         }
+
+        return response.interviewReports
     }
 
 

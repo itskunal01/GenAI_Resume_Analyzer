@@ -1,1036 +1,373 @@
-.home {
-  position: relative;
-
-  width: 100%;
-  height: 100dvh;
-  min-height: 0;
-
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  overflow: hidden;
-
-  background: #0b0e13;
-
-  color: #f4f4f5;
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
-
-
-  /* =========================================================
-     TITLE
-     ========================================================= */
-
-  > h1 {
-    position: absolute;
-
-    top: 42px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: max-content;
-    max-width: 95%;
-
-    margin: 0;
-
-    text-align: center;
-
-    color: #f4f4f5;
-
-    font-size: 36px;
-    font-weight: 750;
-
-    line-height: 1.15;
-
-    letter-spacing: -1.4px;
-
-    white-space: nowrap;
-
-    z-index: 5;
-
-    span {
-      background: linear-gradient(
-        90deg,
-        #ed176e 0%,
-        #ef2378 40%,
-        #c55bdf 100%
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      -webkit-text-fill-color: transparent;
-
-      color: transparent;
-    }
-  }
-
-
-  /* =========================================================
-     SUBTITLE
-     ========================================================= */
-
-  > p {
-    position: absolute;
-
-    top: 98px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 680px;
-    max-width: 90%;
-
-    margin: 0;
-
-    text-align: center;
-
-    color: #969ba5;
-
-    font-size: 14px;
-    font-weight: 400;
-
-    line-height: 22px;
-
-    z-index: 5;
-  }
-
-
-  /* =========================================================
-     MAIN CARD
-     ========================================================= */
-
-  .interview-input-group {
-    position: absolute;
-
-    top: 170px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    /*
-      Smaller than before so the complete card fits
-      inside one desktop viewport.
-    */
-    width: min(900px, calc(100vw - 40px));
-
-    /*
-      Footer is included inside this height.
-    */
-    height: 560px;
-
-    min-height: 0;
-
-    box-sizing: border-box;
-
-    display: flex;
-
-    align-items: stretch;
-
-    gap: 0;
-
-    background: #13181f;
-
-    border: 1px solid #2b313a;
-
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    box-shadow:
-      0 20px 45px rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.025);
-
-    z-index: 2;
-  }
-
-
-  /* =========================================================
-     LEFT PANEL
-     ========================================================= */
-
-  .left {
-    position: relative;
-
-    width: 50%;
-    height: calc(100% - 62px);
-
-    min-width: 0;
-
-    box-sizing: border-box;
-
-    display: flex;
-
-    flex-direction: column;
-
-    padding: 21px 20px 18px;
-
-    border-right: 1px solid #30363f;
-
-    gap: 0;
-
-    &::before {
-      content: "▥  Target Job Description";
-
-      display: block;
-
-      width: 100%;
-      height: 23px;
-
-      margin-bottom: 11px;
-
-      color: #f1f1f3;
-
-      font-size: 15px;
-      font-weight: 700;
-
-      line-height: 23px;
-    }
-
-    &::after {
-      content: "REQUIRED";
-
-      position: absolute;
-
-      top: 21px;
-      right: 20px;
-
-      width: 74px;
-      height: 20px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      box-sizing: border-box;
-
-      border-radius: 4px;
-
-      background: rgba(233, 0, 100, 0.16);
-
-      color: #ed2773;
-
-      font-size: 9px;
-      font-weight: 800;
-
-      letter-spacing: 0.06em;
-    }
-
-    > label {
-      display: none;
-    }
-
-    textarea {
-      flex: 1;
-
-      width: 100%;
-
-      min-height: 0;
-    }
-  }
-
-
-  /* =========================================================
-     RIGHT PANEL
-     ========================================================= */
-
-  .right {
-    position: static;
-
-    width: 50%;
-    height: calc(100% - 62px);
-
-    min-width: 0;
-
-    box-sizing: border-box;
-
-    display: flex;
-
-    flex-direction: column;
-
-    padding: 21px 20px 16px;
-
-    gap: 0;
-
-    &::before {
-      content: "♙  Your Profile";
-
-      display: block;
-
-      width: 100%;
-      height: 23px;
-
-      margin-bottom: 11px;
-
-      color: #f1f1f3;
-
-      font-size: 15px;
-      font-weight: 700;
-
-      line-height: 23px;
-    }
-
-    &::after {
-      content: "AI-Powered Strategy Generation  •  Approx 30s";
-
-      position: absolute;
-
-      left: 0;
-      bottom: 0;
-
-      width: 100%;
-      height: 62px;
-
-      box-sizing: border-box;
-
-      display: flex;
-
-      align-items: center;
-
-      padding-left: 20px;
-
-      background: #13181f;
-
-      border-top: 1px solid #2b313a;
-
-      border-radius: 0 0 14px 14px;
-
-      color: #969ba4;
-
-      font-size: 11px;
-      font-weight: 400;
-
-      line-height: 18px;
-
-      pointer-events: none;
-    }
-  }
-
-
-  /* =========================================================
-     INPUT GROUP
-     ========================================================= */
-
-  .input-group {
+// ── Variables ────────────────────────────────────────────────────────────────
+$bg-page:        #0d1117;
+$bg-card:        #161b22;
+$bg-panel:       #1c2230;
+$bg-input:       #1e2535;
+$border-color:   #2a3348;
+$text-primary:   #e6edf3;
+$text-muted:     #7d8590;
+$accent:         #ff2d78;
+$accent-alt:     #ff6b9d;
+$badge-required: #ff2d78;
+$badge-best:     #ff2d78;
+$info-bg:        #1b2a4a;
+$info-border:    #2d4a7a;
+$font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// ── Page Shell ───────────────────────────────────────────────────────────────
+.home-page {
     width: 100%;
-
-    box-sizing: border-box;
+    min-height: 100vh;
+    background-color: $bg-page;
+    color: $text-primary;
+    font-family: $font-stack;
 
     display: flex;
-
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+}
 
-    gap: 0;
+// ── Page Header ──────────────────────────────────────────────────────────────
+.page-header {
+    text-align: center;
+
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: $text-primary;
+    }
 
     p {
-      display: flex;
-
-      align-items: center;
-
-      height: 17px;
-
-      margin: 0 0 8px;
-
-      color: #f2f2f4;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      line-height: 17px;
+        color: $text-muted;
+        font-size: 0.95rem;
+        max-width: 480px;
+        margin: 0 auto;
+        line-height: 1.6;
     }
 
-    > label:not(.file-label) {
-      display: block;
-
-      width: 100%;
-
-      height: 17px;
-
-      margin-bottom: 8px;
-
-      color: #f1f1f3;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      line-height: 17px;
+    .highlight {
+        color: $accent;
     }
-  }
+}
 
-
-  /* =========================================================
-     BEST RESULTS
-     ========================================================= */
-
-  .highlight {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    height: 20px;
-
-    margin-left: 7px;
-
-    padding: 0 7px;
-
-    box-sizing: border-box;
-
-    border-radius: 4px;
-
-    background: rgba(233, 0, 100, 0.18);
-
-    color: #ed3378;
-
-    font-size: 9px !important;
-
-    font-weight: 800 !important;
-
-    line-height: 20px;
-
-    letter-spacing: 0.04em;
-  }
-
-
-  /* =========================================================
-     TEXTAREAS
-     ========================================================= */
-
-  textarea {
+// ── Main Card ─────────────────────────────────────────────────────────────────
+.interview-card {
     width: 100%;
+    max-width: 900px;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+    overflow: hidden;
 
-    box-sizing: border-box;
-
-    border: 1px solid #292f39;
-
-    outline: none;
-
-    border-radius: 7px;
-
-    padding: 12px 14px;
-
-    background: #202534;
-
-    color: #e9e9ed;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    line-height: 1.55;
-
-    resize: none;
-
-    transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease;
-
-    &::placeholder {
-      color: #858b99;
-
-      opacity: 1;
+    &__body {
+        display: flex;
+        min-height: 520px;
     }
 
-    &:focus {
-      outline: none;
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        border-top: 1px solid $border-color;
 
-      border-color: #e90067;
-
-      box-shadow:
-        0 0 0 1px rgba(233, 0, 103, 0.12);
+        .footer-info {
+            font-size: 0.8rem;
+            color: $text-muted;
+        }
     }
-  }
+}
 
+// ── Panels ────────────────────────────────────────────────────────────────────
+.panel-divider {
+    width: 1px;
+    background-color: $border-color;
+    flex-shrink: 0;
+}
 
-  /* =========================================================
-     JOB DESCRIPTION
-     ========================================================= */
-
-  .left textarea {
+.panel {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
 
-    width: 100%;
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.25rem;
 
-    height: auto;
-
-    min-height: 0;
-
-    padding: 13px 14px 30px;
-
-    background: #202534;
-  }
-
-
-  /* =========================================================
-     RESUME
-     ========================================================= */
-
-  .right .input-group:first-of-type {
-    position: relative;
-
-    margin-bottom: 14px;
-
-    > p {
-      margin-bottom: 8px;
+        h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $text-primary;
+            flex: 1;
+        }
     }
-  }
 
+    &__icon {
+        display: flex;
+        align-items: center;
+        color: $accent;
+    }
 
-  /* =========================================================
-     FILE UPLOAD
-     ========================================================= */
+    &__textarea {
+        flex: 1;
+        width: 100%;
+        background-color: $bg-input;
+        border: 1px solid $border-color;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        color: $text-primary;
+        font-family: $font-stack;
+        font-size: 0.875rem;
+        resize: none;
+        outline: none;
+        transition: border-color 0.2s;
+        line-height: 1.5;
 
-  .file-label {
-    position: relative;
+        &::placeholder {
+            color: $text-muted;
+        }
 
-    width: 100%;
+        &:focus {
+            border-color: $accent;
+        }
 
-    height: 118px;
+        &--short {
+            flex: unset;
+            height: 96px;
+        }
+    }
 
-    min-height: 118px;
+    &--left {
+        position: relative;
 
-    box-sizing: border-box;
+        .char-counter {
+            position: absolute;
+            bottom: 2.25rem;
+            right: 2rem;
+            font-size: 0.75rem;
+            color: $text-muted;
+        }
+    }
 
-    display: flex;
+    &--right {
+        gap: 0.75rem;
+    }
+}
 
-    align-items: flex-end;
-
-    justify-content: center;
-
-    padding: 0 10px 19px;
-
-    border: 1px dashed #3b4350;
-
-    border-radius: 8px;
-
-    background: #202534;
-
-    color: #f0f0f3;
-
-    cursor: pointer;
-
-    font-size: 0;
-
-    transition:
-      border-color 0.15s ease,
-      background 0.15s ease;
-  }
-
-  .file-label::before {
-    content: "↑";
-
-    position: absolute;
-
-    top: 21px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #f0006b;
-
-    font-size: 27px;
-
-    line-height: 1;
-  }
-
-  .file-label::after {
-    content:
-      "Click to upload or drag & drop"
-      "\A"
-      "PDF or DOCX (Max 5MB)";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 18px;
-
-    white-space: pre-line;
-
-    text-align: center;
-
-    color: #f0f0f3;
-
-    font-size: 13px;
-
+// ── Badges ────────────────────────────────────────────────────────────────────
+.badge {
+    font-size: 0.7rem;
     font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 
-    line-height: 18px;
-  }
+    &--required {
+        background-color: rgba($badge-required, 0.15);
+        color: $badge-required;
+        border: 1px solid rgba($badge-required, 0.3);
+    }
 
-  .file-label:hover {
-    border-color: rgba(233, 0, 103, 0.65);
+    &--best {
+        background-color: rgba($badge-best, 0.15);
+        color: $badge-best;
+        border: 1px solid rgba($badge-best, 0.3);
+    }
+}
 
-    background: #222737;
-  }
-
-
-  /* =========================================================
-     OR DIVIDER
-     ========================================================= */
-
-  .right .input-group:first-of-type::after {
-    content: "OR";
-
-    position: absolute;
-
-    top: 153px;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 17px;
-
+// ── Section Label ─────────────────────────────────────────────────────────────
+.section-label {
     display: flex;
-
     align-items: center;
-    justify-content: center;
-
-    color: #858a93;
-
-    font-size: 10px;
-
-    font-weight: 400;
-
-    background:
-      linear-gradient(
-        to right,
-        transparent 0%,
-        transparent 0%,
-        #303640 0%,
-        #303640 43%,
-        transparent 43%,
-        transparent 57%,
-        #303640 57%,
-        #303640 100%
-      );
-
-    background-size: 100% 1px;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    z-index: 2;
-  }
-
-
-  /* =========================================================
-     SELF DESCRIPTION
-     ========================================================= */
-
-  .right .input-group:has(textarea) {
-    position: relative;
-
-    width: 100%;
-
-    height: auto;
-
-    min-height: 0;
-
-    margin-top: 0;
-
-    > label {
-      display: block;
-
-      width: 100%;
-
-      height: 17px;
-
-      margin-bottom: 8px;
-
-      color: #f1f1f3;
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-      line-height: 17px;
-    }
-
-    textarea {
-      width: 100%;
-
-      height: 88px;
-
-      min-height: 88px;
-
-      padding: 12px 14px;
-
-      border-color: #d90060;
-
-      background: #202534;
-
-      box-shadow:
-        0 0 0 1px rgba(217, 0, 96, 0.1);
-    }
-  }
-
-
-  /* =========================================================
-     BLUE INFORMATION BOX
-     ========================================================= */
-
-  .right .input-group:has(textarea)::after {
-    content:
-      "●  Either a Resume or a Self Description is required to"
-      "\A     generate a personalized plan.";
-
-    display: block;
-
-    width: 100%;
-
-    min-height: 56px;
-
-    box-sizing: border-box;
-
-    margin-top: 11px;
-
-    padding: 9px 11px;
-
-    border: 1px solid #2d4c77;
-
-    border-radius: 7px;
-
-    background: #172d50;
-
-    color: #91b8ed;
-
-    font-size: 11px;
-
+    gap: 0.5rem;
+    font-size: 0.875rem;
     font-weight: 500;
+    color: $text-primary;
+    margin-bottom: 0.25rem;
+}
 
-    line-height: 17px;
-  }
-
-
-  /* =========================================================
-     GENERATE BUTTON
-     ========================================================= */
-
-  .button {
-    position: absolute;
-
-    right: 20px;
-    bottom: 10px;
-
-    z-index: 20;
-
-    width: 270px;
-
-    height: 40px;
-
-    min-height: 40px;
-
-    box-sizing: border-box;
-
+// ── Dropzone ──────────────────────────────────────────────────────────────────
+.upload-section {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.dropzone {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    margin: 0;
-
-    padding: 0 16px;
-
-    border: none;
-
-    border-radius: 7px;
-
-    background: linear-gradient(
-      90deg,
-      #ed0064 0%,
-      #f00b70 100%
-    );
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    line-height: 18px;
-
+    gap: 0.35rem;
+    padding: 1.5rem 1rem;
+    background-color: $bg-input;
+    border: 2px dashed $border-color;
+    border-radius: 0.6rem;
     cursor: pointer;
-
-    box-shadow:
-      0 6px 15px rgba(233, 0, 103, 0.24);
-
-    transition:
-      transform 0.15s ease,
-      filter 0.15s ease;
-
-    &::before {
-      content: "★";
-
-      margin-right: 8px;
-
-      color: #ffffff;
-
-      font-size: 13px;
-
-      line-height: 1;
-    }
+    transition: border-color 0.2s, background-color 0.2s;
 
     &:hover {
-      filter: brightness(1.06);
+        border-color: $accent;
+        background-color: rgba($accent, 0.05);
+    }
 
-      transform: translateY(-1px);
+    &__icon {
+        color: $accent;
+        margin-bottom: 0.25rem;
+    }
+
+    &__title {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $text-primary;
+        margin: 0;
+    }
+
+    &__subtitle {
+        font-size: 0.75rem;
+        color: $text-muted;
+        margin: 0;
+    }
+}
+
+// ── OR Divider ────────────────────────────────────────────────────────────────
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: $text-muted;
+    font-size: 0.75rem;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: $border-color;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+// ── Self Description ──────────────────────────────────────────────────────────
+.self-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+// ── Info Box ──────────────────────────────────────────────────────────────────
+.info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    background-color: $info-bg;
+    border: 1px solid $info-border;
+    border-radius: 0.5rem;
+
+    &__icon {
+        flex-shrink: 0;
+        color: #4a90e2;
+        margin-top: 1px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #8ab4f8;
+        line-height: 1.5;
+
+        strong {
+            color: $text-primary;
+        }
+    }
+}
+
+// ── Generate Button ───────────────────────────────────────────────────────────
+.generate-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    font-family: $font-stack;
+
+    &:hover {
+        opacity: 0.9;
     }
 
     &:active {
-      transform: translateY(0);
+        transform: scale(0.98);
     }
-  }
+}
 
+.recent-reports{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 900px;
 
-  /* =========================================================
-     SHORT DESKTOP SCREENS
-     ========================================================= */
+    .reports-list{
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
 
-  @media (min-width: 901px) and (max-height: 760px) {
-    > h1 {
-      top: 25px;
+        .report-item{
+            background-color: $bg-card;
+            border: 1px solid $border-color;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            cursor: pointer;
+            flex-shrink: 0;
 
-      font-size: 32px;
+            .match-score {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: $accent;
+                align-items: flex-start;
+            }
+        }
     }
+}
 
-    > p {
-      top: 72px;
 
-      font-size: 13px;
+// ── Page Footer ───────────────────────────────────────────────────────────────
+.page-footer {
+    display: flex;
+    gap: 1.5rem;
 
-      line-height: 20px;
+    a {
+        font-size: 0.8rem;
+        color: $text-muted;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $text-primary;
+        }
     }
-
-    .interview-input-group {
-      top: 125px;
-
-      height: 500px;
-    }
-
-    .left,
-    .right {
-      height: calc(100% - 58px);
-
-      padding-top: 18px;
-    }
-
-    .right::after {
-      height: 58px;
-    }
-
-    .button {
-      bottom: 9px;
-
-      height: 38px;
-
-      min-height: 38px;
-    }
-
-    .file-label {
-      height: 105px;
-
-      min-height: 105px;
-    }
-
-    .right .input-group:has(textarea) textarea {
-      height: 78px;
-
-      min-height: 78px;
-    }
-  }
-
-
-  /* =========================================================
-     TABLET
-     ========================================================= */
-
-  @media (max-width: 900px) {
-    height: auto;
-
-    min-height: 100dvh;
-
-    overflow-y: auto;
-
-    padding: 30px 12px 60px;
-
-    > h1 {
-      position: relative;
-
-      top: auto;
-      left: auto;
-
-      transform: none;
-
-      width: 100%;
-
-      margin: 0 0 10px;
-
-      font-size: 32px;
-
-      white-space: normal;
-    }
-
-    > p {
-      position: relative;
-
-      top: auto;
-      left: auto;
-
-      transform: none;
-
-      width: 100%;
-
-      margin-bottom: 25px;
-    }
-
-    .interview-input-group {
-      position: relative;
-
-      top: auto;
-      left: auto;
-
-      transform: none;
-
-      width: 100%;
-
-      height: auto;
-
-      min-height: 0;
-
-      flex-direction: column;
-
-      overflow: hidden;
-    }
-
-    .left,
-    .right {
-      width: 100%;
-
-      height: auto;
-    }
-
-    .left {
-      min-height: 400px;
-
-      border-right: none;
-
-      border-bottom: 1px solid #30363f;
-    }
-
-    .right {
-      min-height: 480px;
-    }
-
-    .right::after {
-      display: none;
-    }
-
-    .button {
-      position: relative;
-
-      right: auto;
-      bottom: auto;
-
-      width: calc(100% - 40px);
-
-      margin: 18px 20px;
-    }
-  }
-
-
-  /* =========================================================
-     MOBILE
-     ========================================================= */
-
-  @media (max-width: 520px) {
-    padding: 20px 10px 50px;
-
-    > h1 {
-      margin-top: 5px;
-
-      padding: 0 5px;
-
-      font-size: 27px;
-
-      line-height: 34px;
-
-      letter-spacing: -0.8px;
-    }
-
-    > p {
-      padding: 0 8px;
-
-      font-size: 13px;
-
-      line-height: 20px;
-
-      br {
-        display: none;
-      }
-    }
-
-    .interview-input-group {
-      border-radius: 10px;
-    }
-
-    .left,
-    .right {
-      padding: 18px 16px;
-    }
-
-    .left {
-      min-height: 380px;
-    }
-
-    .left textarea {
-      min-height: 300px;
-    }
-
-    .file-label {
-      height: 115px;
-
-      min-height: 115px;
-    }
-
-    .right .input-group:has(textarea) textarea {
-      height: 100px;
-
-      min-height: 100px;
-    }
-
-    .button {
-      width: calc(100% - 32px);
-
-      margin: 18px 16px;
-
-      height: 44px;
-
-      min-height: 44px;
-    }
-  }
 }
