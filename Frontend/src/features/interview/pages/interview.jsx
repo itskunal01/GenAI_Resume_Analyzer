@@ -144,7 +144,7 @@ function Interview() {
               <strong>{report.matchScore || 0}</strong>
               <span>%</span>
             </div>
-
+            
             <div className="score-text">
               <span>Overall Match</span>
 

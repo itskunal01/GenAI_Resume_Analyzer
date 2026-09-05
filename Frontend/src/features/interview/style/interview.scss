@@ -1,392 +1,331 @@
+// ── Theme Color Tokens (Aetherium Cyber-Luxe) ─────────────────────────
+$bg-page:        #030712;
+$bg-dashboard:   rgba(15, 23, 42, 0.75);
+$bg-card:        rgba(30, 41, 59, 0.5);
+$bg-card-alt:    rgba(15, 23, 42, 0.6);
+$bg-nav:         rgba(10, 15, 29, 0.8);
+
+$border-color:   rgba(99, 102, 241, 0.18);
+$border-light:   rgba(147, 51, 234, 0.25);
+$border-hover:   #06B6D4;
+
+// Primary Accents (Electric Cyan & Neon Purple)
+$accent:         #06B6D4;
+$accent-alt:     #A855F7;
+$accent-glow:    rgba(6, 182, 212, 0.3);
+$gradient-accent: linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #A855F7 100%);
+
+// Dynamic Score Threshold Colors
+$score-green:    #10B981;
+$score-green-bg: rgba(16, 185, 129, 0.15);
+$score-red:      #F43F5E;
+$score-red-bg:   rgba(244, 63, 94, 0.15);
+
+// Highlights & Typography
+$badge-required: #EC4899; // Neon Magenta
+$text-main:      #F8FAFC;
+$text-secondary: #CBD5E1;
+$text-muted:     #64748B;
+
+$font-stack:     'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+// ── Base Container ────────────────────────────────────────────────────────────
 .interview {
   width: 100%;
   min-height: 100dvh;
   height: auto;
-
   padding: 24px;
-
   box-sizing: border-box;
-
   overflow-x: hidden;
   overflow-y: auto;
-
-  background:
-    radial-gradient(
-      circle at top center,
-      rgba(237, 23, 110, 0.06),
-      transparent 30%
-    ),
-    #090c12;
-
-  color: #f3f4f6;
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  background-color: $bg-page;
+  background-image: 
+    radial-gradient(circle at 20% 15%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 45%);
+  color: $text-main;
+  font-family: $font-stack;
 
   .interview-dashboard {
     width: min(1600px, 100%);
     min-height: 100%;
     height: auto;
-
     margin: auto;
-
     display: flex;
     flex-direction: column;
-
-    /*
-      IMPORTANT:
-      Don't hide the dashboard's overflowing content.
-      The outer .interview page handles scrolling.
-    */
     overflow: visible;
-
-    border: 1px solid #27303b;
-    border-radius: 20px;
-
-    background: #10141b;
-
-    box-shadow:
-      0 25px 80px rgba(0, 0, 0, 0.4);
+    border: 1px solid $border-color;
+    border-radius: 24px;
+    background: $bg-dashboard;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.1);
+    backdrop-filter: blur(24px) saturate(180%);
   }
 
   /* =========================================================
      HEADER
      ========================================================= */
-
   .interview-header {
     flex-shrink: 0;
-
     min-height: 120px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 30px;
-
-    padding: 24px 32px;
-
+    padding: 28px 36px;
     box-sizing: border-box;
-
-    border-bottom: 1px solid #27303b;
-
-    background:
-      linear-gradient(
-        90deg,
-        #121720,
-        #0f1319
-      );
+    border-bottom: 1px solid $border-color;
+    background: rgba(10, 15, 29, 0.4);
   }
 
   .header-label,
   .section-label {
-    color: #ed176e;
-
+    background: linear-gradient(135deg, $accent 0%, $accent-alt 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   .header-content {
     h1 {
-      margin: 7px 0;
-
-      font-size: clamp(25px, 2.2vw, 36px);
-      font-weight: 750;
-
-      letter-spacing: -0.8px;
+      margin: 6px 0;
+      font-size: clamp(24px, 2.2vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: $text-main;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     p {
       margin: 0;
-
-      color: #909aa8;
-
+      color: $text-secondary;
       font-size: 13px;
       line-height: 1.6;
     }
   }
 
+  /* =========================================================
+     SCORE BADGES
+     ========================================================= */
   .match-score {
     display: flex;
     align-items: center;
-
-    gap: 14px;
+    gap: 16px;
   }
 
   .score-circle {
-    width: 64px;
-    height: 64px;
-
+    width: 68px;
+    height: 68px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-
-    padding-top: 15px;
-
     box-sizing: border-box;
-
-    border: 3px solid #ed176e;
+    border: 2px solid var(--score-color, #{$accent});
     border-radius: 50%;
-
-    box-shadow:
-      0 0 25px rgba(237, 23, 110, 0.2);
+    box-shadow: 0 0 25px var(--score-bg, #{$accent-glow});
+    background: var(--score-bg, rgba($accent, 0.1));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     strong {
       font-size: 22px;
+      font-weight: 800;
+      color: $text-main;
+      line-height: 1;
     }
 
     span {
-      color: #ed176e;
-
-      font-size: 12px;
+      color: var(--score-color, #{$accent});
+      font-size: 11px;
       font-weight: 700;
+      margin-left: 1px;
+    }
+
+    &[data-score-status="high"],
+    &.score-high {
+      --score-color: #{$score-green};
+      --score-bg: #{$score-green-bg};
+    }
+
+    &[data-score-status="low"],
+    &.score-low {
+      --score-color: #{$score-red};
+      --score-bg: #{$score-red-bg};
     }
   }
 
   .score-text {
     display: flex;
     flex-direction: column;
-
     gap: 4px;
 
     span {
-      color: #7f8996;
-
+      color: $text-muted;
       font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
     strong {
       font-size: 13px;
+      color: $text-main;
     }
   }
 
   /* =========================================================
      DASHBOARD BODY
      ========================================================= */
-
   .dashboard-body {
     display: grid;
-
-    grid-template-columns:
-      220px
-      minmax(0, 1fr)
-      280px;
-
-    /*
-      Allow the body to grow with its content.
-    */
+    grid-template-columns: 230px minmax(0, 1fr) 300px;
     flex: none;
     min-height: 0;
-
     overflow: visible;
   }
 
   /* =========================================================
      LEFT NAVIGATION
      ========================================================= */
-
   .dashboard-navigation {
     min-height: 0;
-
     display: flex;
     flex-direction: column;
-
-    padding: 25px 15px;
-
+    padding: 28px 16px;
     box-sizing: border-box;
-
-    border-right: 1px solid #27303b;
-
-    background: #0d1117;
+    border-right: 1px solid $border-color;
+    background: $bg-nav;
   }
 
   .navigation-title {
-    padding: 0 10px 15px;
-
-    color: #626c79;
-
+    padding: 0 10px 16px;
+    color: $text-muted;
     font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.4px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
   .dashboard-navigation nav {
     display: flex;
     flex-direction: column;
-
     gap: 6px;
   }
 
   .navigation-item {
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 10px;
-
-    padding: 13px 11px;
-
+    padding: 12px 14px;
     border: 1px solid transparent;
-    border-radius: 8px;
-
+    border-radius: 12px;
     background: transparent;
-
-    color: #919aa7;
-
+    color: $text-secondary;
     text-align: left;
-
     font: inherit;
-
     cursor: pointer;
-
-    transition: 0.2s ease;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
       color: #ffffff;
-
-      background: #151b23;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
     }
 
     &.active {
-      border-color: rgba(237, 23, 110, 0.2);
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(237, 23, 110, 0.13),
-          transparent
-        );
-
+      border-color: rgba($accent-alt, 0.5);
+      background: linear-gradient(90deg, rgba($accent-alt, 0.15), rgba($accent, 0.05));
       color: #ffffff;
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
 
       .navigation-count {
-        color: #ed176e;
+        color: $accent;
+        background: rgba($accent, 0.15);
       }
     }
   }
 
   .navigation-label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
   }
 
   .navigation-count {
-    color: #66707e;
-
+    color: $text-muted;
     font-size: 10px;
     font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .navigation-footer {
     margin-top: auto;
-
     padding: 20px 10px 0;
-
-    border-top: 1px solid #242d37;
+    border-top: 1px solid $border-color;
 
     span {
       display: block;
-
-      margin-bottom: 10px;
-
-      color: #68717e;
-
+      margin-bottom: 8px;
+      color: $text-muted;
       font-size: 9px;
       font-weight: 800;
-
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     strong {
-      color: #aeb5bf;
-
+      color: $text-secondary;
       font-size: 11px;
     }
   }
 
   .progress-track {
     width: 100%;
-    height: 5px;
-
-    margin-bottom: 9px;
-
+    height: 6px;
+    margin-bottom: 10px;
     overflow: hidden;
-
     border-radius: 20px;
-
-    background: #252d37;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .progress-value {
     height: 100%;
-
     border-radius: inherit;
-
-    background:
-      linear-gradient(
-        90deg,
-        #ed176e,
-        #c55bff
-      );
+    background: $gradient-accent;
   }
 
   /* =========================================================
      MAIN CONTENT
      ========================================================= */
-
   .dashboard-content {
     min-width: 0;
     min-height: 0;
-
-    padding: 32px;
-
+    padding: 36px;
     box-sizing: border-box;
-
-    /*
-      Removed internal scrolling.
-      The entire .interview page scrolls instead.
-    */
     overflow: visible;
-
-    scrollbar-width: thin;
-    scrollbar-color: #323b47 transparent;
   }
 
   .section-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 20px;
-
-    margin-bottom: 26px;
+    margin-bottom: 28px;
 
     h2 {
-      margin: 7px 0 8px;
-
-      font-size: 27px;
-      font-weight: 750;
-
-      letter-spacing: -0.6px;
+      margin: 6px 0 8px;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     p {
       max-width: 650px;
-
       margin: 0;
-
-      color: #8e98a5;
-
+      color: $text-secondary;
       font-size: 13px;
       line-height: 1.6;
     }
@@ -394,59 +333,45 @@
 
   .section-count {
     flex-shrink: 0;
-
     margin-top: 4px;
-
-    padding: 7px 10px;
-
-    border: 1px solid #29323d;
-    border-radius: 6px;
-
-    color: #7e8794;
-
+    padding: 6px 12px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: $text-muted;
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: 1px;
   }
 
   /* =========================================================
      QUESTION CARDS
      ========================================================= */
-
   .questions-grid {
     display: flex;
     flex-direction: column;
-
     gap: 16px;
   }
 
   .question-card {
-    padding: 22px;
-
-    border: 1px solid #28313c;
-    border-radius: 13px;
-
-    background: #121821;
-
-    transition:
-      transform 0.2s ease,
-      border-color 0.2s ease;
+    padding: 24px;
+    border: 1px solid $border-color;
+    border-radius: 16px;
+    background: $bg-card;
+    backdrop-filter: blur(12px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       transform: translateY(-2px);
-
-      border-color: #3b4654;
+      border-color: rgba($accent, 0.4);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba($accent, 0.15);
     }
 
     h2 {
       margin: 14px 0 20px;
-
-      color: #f0f1f3;
-
-      font-size: 17px;
-      font-weight: 650;
-
+      color: $text-main;
+      font-size: 16px;
+      font-weight: 600;
       line-height: 1.55;
     }
   }
@@ -457,83 +382,61 @@
     justify-content: space-between;
 
     span {
-      color: #ed176e;
-
+      color: $accent;
       font-size: 9px;
       font-weight: 800;
-
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
   }
 
   .question-index {
-    width: 26px;
-    height: 26px;
-
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
-
-    border: 1px solid #303a46;
-    border-radius: 7px;
-
-    color: #8f99a6;
-
-    font-size: 10px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: $bg-card-alt;
+    color: $text-secondary;
+    font-size: 11px;
     font-weight: 700;
   }
 
   .question-details {
     display: grid;
-
-    grid-template-columns:
-      0.9fr
-      1.4fr;
-
-    gap: 12px;
+    grid-template-columns: 0.9fr 1.4fr;
+    gap: 14px;
   }
 
   .detail-block {
-    padding: 15px;
-
-    border: 1px solid #28323d;
-    border-radius: 9px;
-
-    background: #0e131a;
+    padding: 16px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    background: $bg-card-alt;
 
     h4 {
-      margin: 0 0 7px;
-
-      color: #7d8795;
-
+      margin: 0 0 8px;
+      color: $text-muted;
       font-size: 9px;
       font-weight: 800;
-
-      letter-spacing: 0.8px;
-
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     p {
       margin: 0;
-
-      color: #a7afbb;
-
+      color: $text-secondary;
       font-size: 12px;
       line-height: 1.65;
     }
 
     &.answer {
-      border-color: rgba(237, 23, 110, 0.18);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(237, 23, 110, 0.06),
-          transparent
-        );
+      border-color: rgba($accent-alt, 0.3);
+      background: linear-gradient(135deg, rgba($accent-alt, 0.08), rgba($accent, 0.02));
 
       h4 {
-        color: #ed176e;
+        color: $accent-alt;
       }
     }
   }
@@ -541,59 +444,58 @@
   /* =========================================================
      ROADMAP
      ========================================================= */
-
   .roadmap-grid {
     display: grid;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .roadmap-card {
     display: flex;
-
-    gap: 15px;
-
-    padding: 19px;
-
-    border: 1px solid #29323d;
-    border-radius: 12px;
-
-    background: #121821;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid $border-color;
+    border-radius: 14px;
+    background: $bg-card;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
-      border-color: rgba(237, 23, 110, 0.35);
+      border-color: rgba($accent-alt, 0.4);
+      transform: translateY(-2px);
     }
   }
 
   .roadmap-day {
     flex-shrink: 0;
-
-    width: 42px;
-
+    width: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding-top: 2px;
 
     span {
-      color: #747e8b;
-
+      color: $text-muted;
       font-size: 8px;
       font-weight: 800;
-
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     strong {
-      margin-top: 5px;
-
-      color: #ed176e;
-
+      margin-top: 4px;
+      color: var(--score-color, #{$accent});
       font-size: 24px;
+      font-weight: 800;
+    }
+
+    &[data-score-status="high"],
+    &.score-high {
+      --score-color: #{$score-green};
+    }
+
+    &[data-score-status="low"],
+    &.score-low {
+      --score-color: #{$score-red};
     }
   }
 
@@ -602,31 +504,24 @@
 
     h3 {
       margin: 0 0 12px;
-
-      color: #f0f1f3;
-
+      color: $text-main;
       font-size: 14px;
       line-height: 1.45;
+      font-weight: 600;
     }
 
     ul {
       display: flex;
       flex-direction: column;
-
-      gap: 7px;
-
+      gap: 8px;
       margin: 0;
-
       padding-left: 16px;
-
-      color: #949eab;
-
+      color: $text-secondary;
       font-size: 11px;
-
       line-height: 1.55;
 
       li::marker {
-        color: #ed176e;
+        color: $accent;
       }
     }
   }
@@ -634,54 +529,39 @@
   /* =========================================================
      SKILLS SIDEBAR
      ========================================================= */
-
   .skills-sidebar {
     min-height: 0;
-
     display: flex;
     flex-direction: column;
-
-    padding: 30px 20px;
-
+    padding: 32px 24px;
     box-sizing: border-box;
-
-    border-left: 1px solid #27303b;
-
-    background: #0d1117;
-
-    /*
-      Let this column grow naturally.
-    */
+    border-left: 1px solid $border-color;
+    background: $bg-nav;
     overflow: visible;
   }
 
   .skills-header {
     padding-bottom: 20px;
-
-    border-bottom: 1px solid #27303b;
+    border-bottom: 1px solid $border-color;
 
     > span {
-      color: #ed176e;
-
+      color: $accent;
       font-size: 9px;
       font-weight: 800;
-
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
     h3 {
       margin: 8px 0;
-
       font-size: 20px;
+      font-weight: 700;
     }
 
     p {
       margin: 0;
-
-      color: #7e8895;
-
+      color: $text-muted;
       font-size: 11px;
-
       line-height: 1.6;
     }
   }
@@ -689,101 +569,77 @@
   .skill-list {
     display: flex;
     flex-direction: column;
-
-    gap: 10px;
-
-    padding-top: 18px;
+    gap: 12px;
+    padding-top: 20px;
   }
 
   .skill-item {
     display: flex;
-
-    gap: 10px;
-
-    padding: 13px;
-
-    border: 1px solid #29323d;
-    border-radius: 9px;
-
-    background: #121821;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    background: $bg-card;
 
     .skill-indicator {
-      width: 7px;
-      height: 7px;
-
+      width: 8px;
+      height: 8px;
       flex-shrink: 0;
-
       margin-top: 5px;
-
       border-radius: 50%;
-
-      background: #d49bff;
+      background: $accent;
     }
 
     .severity {
-      color: #77818e;
-
+      color: $text-muted;
       font-size: 9px;
-
-      text-transform: capitalize;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     h4 {
-      margin: 5px 0 0;
-
-      color: #c9cdd4;
-
-      font-size: 11px;
+      margin: 4px 0 0;
+      color: $text-main;
+      font-size: 12px;
       font-weight: 600;
-
       line-height: 1.5;
     }
 
     &.high {
-      border-color: rgba(237, 23, 110, 0.22);
+      border-color: rgba($badge-required, 0.4);
+      background: linear-gradient(135deg, rgba($badge-required, 0.1), transparent);
 
       .skill-indicator {
-        background: #ed176e;
+        background: $badge-required;
+        box-shadow: 0 0 10px $badge-required;
       }
 
       .severity {
-        color: #ed176e;
+        color: $badge-required;
       }
     }
   }
 
   .skills-tip {
     margin-top: auto;
-
-    padding: 16px;
-
-    border: 1px solid rgba(100, 132, 255, 0.18);
-
-    border-radius: 10px;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(65, 112, 230, 0.11),
-        transparent
-      );
+    padding: 18px;
+    border: 1px solid $border-color;
+    border-radius: 14px;
+    background: rgba($bg-card-alt, 0.8);
 
     > span {
-      color: #81aaff;
-
+      color: $badge-required;
       font-size: 9px;
       font-weight: 800;
-
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     p {
-      margin: 9px 0 0;
-
-      color: #99a4b3;
-
+      margin: 8px 0 0;
+      color: $text-secondary;
       font-size: 11px;
-
       line-height: 1.6;
     }
   }
@@ -791,88 +647,51 @@
   /* =========================================================
      PREPARATION PLAN
      ========================================================= */
-
   .preparation-plan {
-    /*
-      Keep the existing appearance/layout.
-      It now grows with its contents.
-    */
     flex: none;
-
     min-height: 0;
-
     display: flex;
-
     flex-direction: column;
-
-    margin-top: 20px;
-
+    margin-top: 24px;
     overflow: visible;
-
-    border-top: 1px solid #27303b;
-
-    border-bottom: 1px solid #27303b;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
   }
 
   .preparation-plan-header {
     flex-shrink: 0;
-
     display: flex;
-
     flex-direction: column;
-
-    gap: 5px;
-
-    padding: 16px 0 12px;
+    gap: 4px;
+    padding: 18px 0 14px;
 
     span {
-      color: #ed176e;
-
+      color: $accent;
       font-size: 9px;
-
       font-weight: 800;
-
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
     strong {
-      color: #e8ebef;
-
+      color: $text-main;
       font-size: 14px;
+      font-weight: 700;
     }
   }
 
-  /*
-    Preparation content is allowed to expand.
-    The page itself becomes scrollable.
-  */
-
   .preparation-plan-scroll {
     flex: none;
-
     min-height: 0;
-
     overflow: visible;
-
-    padding-right: 8px;
-
-    padding-bottom: 12px;
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-      #3a4552
-      transparent;
+    padding-bottom: 16px;
   }
 
   .preparation-item {
     display: flex;
-
-    gap: 10px;
-
-    padding: 12px 0;
-
-    border-bottom: 1px solid #202933;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 
     &:last-child {
       border-bottom: none;
@@ -881,33 +700,35 @@
 
   .preparation-day {
     flex-shrink: 0;
-
-    width: 34px;
-
+    width: 36px;
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     padding-top: 2px;
 
     span {
-      color: #697481;
-
+      color: $text-muted;
       font-size: 7px;
-
       font-weight: 800;
-
       letter-spacing: 0.8px;
+      text-transform: uppercase;
     }
 
     strong {
-      margin-top: 3px;
-
-      color: #ed176e;
-
+      margin-top: 2px;
+      color: var(--score-color, #{$accent});
       font-size: 18px;
+      font-weight: 800;
+    }
+
+    &[data-score-status="high"],
+    &.score-high {
+      --score-color: #{$score-green};
+    }
+
+    &[data-score-status="low"],
+    &.score-low {
+      --score-color: #{$score-red};
     }
   }
 
@@ -916,35 +737,24 @@
 
     h4 {
       margin: 0 0 8px;
-
-      color: #d7dce2;
-
-      font-size: 11px;
-
-      font-weight: 650;
-
+      color: $text-main;
+      font-size: 12px;
+      font-weight: 600;
       line-height: 1.45;
     }
 
     ul {
       display: flex;
-
       flex-direction: column;
-
-      gap: 5px;
-
+      gap: 6px;
       margin: 0;
-
-      padding-left: 14px;
-
-      color: #808b98;
-
-      font-size: 10px;
-
+      padding-left: 16px;
+      color: $text-secondary;
+      font-size: 11px;
       line-height: 1.5;
 
       li::marker {
-        color: #ed176e;
+        color: $accent-alt;
       }
     }
   }
@@ -952,23 +762,16 @@
   /* =========================================================
      RESPONSIVE
      ========================================================= */
-
   @media (max-width: 1200px) {
     .dashboard-body {
-      grid-template-columns:
-        190px
-        minmax(0, 1fr)
-        240px;
+      grid-template-columns: 200px minmax(0, 1fr) 260px;
     }
 
     .dashboard-content {
-      padding: 25px;
+      padding: 28px;
     }
 
-    .question-details {
-      grid-template-columns: 1fr;
-    }
-
+    .question-details,
     .roadmap-grid {
       grid-template-columns: 1fr;
     }
@@ -976,44 +779,24 @@
 
   @media (max-width: 900px) {
     height: auto;
-
     min-height: 100dvh;
-
-    overflow-x: hidden;
-    overflow-y: auto;
 
     .interview-dashboard {
       height: auto;
-
       min-height: calc(100dvh - 48px);
-
-      overflow: visible;
     }
 
     .dashboard-body {
-      grid-template-columns:
-        180px
-        minmax(0, 1fr);
-
-      overflow: visible;
+      grid-template-columns: 180px minmax(0, 1fr);
     }
 
     .skills-sidebar {
       grid-column: 1 / -1;
-
-      border-top: 1px solid #27303b;
-
+      border-top: 1px solid $border-color;
       border-left: none;
-
       display: grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      gap: 25px;
-
-      overflow: visible;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
     .skills-header {
@@ -1026,39 +809,31 @@
   }
 
   @media (max-width: 650px) {
-    padding: 10px;
+    padding: 12px;
 
     .interview-dashboard {
-      min-height: calc(100dvh - 20px);
-
-      border-radius: 14px;
-
-      overflow: visible;
+      min-height: calc(100dvh - 24px);
+      border-radius: 16px;
     }
 
     .interview-header {
       align-items: flex-start;
-
       flex-direction: column;
-
-      padding: 22px;
+      padding: 24px;
     }
 
     .dashboard-body {
       display: block;
-
-      overflow: visible;
     }
 
     .dashboard-navigation {
       border-right: none;
-
-      border-bottom: 1px solid #27303b;
+      border-bottom: 1px solid $border-color;
 
       nav {
         flex-direction: row;
-
         overflow-x: auto;
+        padding-bottom: 8px;
       }
 
       .navigation-item {
@@ -1071,11 +846,7 @@
     }
 
     .dashboard-content {
-      min-height: 500px;
-
       padding: 20px;
-
-      overflow: visible;
     }
 
     .section-header {
@@ -1084,10 +855,7 @@
 
     .skills-sidebar {
       display: flex;
-
       padding: 20px;
-
-      overflow: visible;
 
       .skills-tip {
         margin-top: 20px;
@@ -1095,7 +863,7 @@
     }
 
     .question-card {
-      padding: 17px;
+      padding: 18px;
     }
   }
 }
