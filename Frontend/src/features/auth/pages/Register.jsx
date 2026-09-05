@@ -14,7 +14,7 @@ const Register = () => {
 
         const handleSubmit = async (e)=>{
         e.preventDefault()
-        await handleRegister({username,email,password})
+        await handleRegister(username,email,password)
         navigate("/")
     }
 
@@ -37,7 +37,7 @@ const Register = () => {
                 <label htmlFor="username">UserName</label>
                 <input 
                 onChange={(e)=>{setusername(e.target.value)}}
-                qtype ="text" name="username" id="username" placeholder='Enter your username' />
+                type ="text" name="username" id="username" placeholder='Enter your username' />
             </div> 
 
 

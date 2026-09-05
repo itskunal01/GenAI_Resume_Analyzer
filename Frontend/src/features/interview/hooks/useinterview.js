@@ -22,8 +22,10 @@ export const useInterview = ()=>{
         try{
             const response = await generateInterviewReport({jobDescription, selfDescription, resumeFile})
             setReport(response.interviewReport)
+            return response.interviewReport
         }catch(error){
-           console.log(error) 
+            console.error(error)
+            return null
         } finally{
             setLoading(false)
         }
