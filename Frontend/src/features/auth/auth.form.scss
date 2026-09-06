@@ -1,49 +1,123 @@
-main{
-    min-height: 100vh;
-    width: 100%;
+// ── Variables (Aether Platinum / Midnight Executive) ─────────────────────────
+$bg-page:        #090D16;
+$bg-card:        rgba(15, 23, 42, 0.85);
+$bg-input:       rgba(15, 23, 42, 0.7);
+$border-color:   rgba(148, 163, 184, 0.15);
+$border-hover:   #94A3B8;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+$text-primary:   #F8FAFC;
+$text-muted:     #64748B;
 
+$accent:         #38BDF8;
+$accent-glow:    rgba(56, 189, 248, 0.15);
+$gradient-accent: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);
+$font-stack:     'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-.form-container{
+// ── Styled Elements ─────────────────────────────────────────────────────────
+main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg-page;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 85% 90%, rgba(99, 102, 241, 0.04) 0%, transparent 40%);
+  font-family: $font-stack;
+  color: $text-primary;
+  padding: 1.5rem;
+
+  .form-container {
     min-width: 350px;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+  }
+
+  form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
 
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.8rem 1.6rem;
+      margin-top: 0.5rem;
+      background: $gradient-accent;
+      color: #0F172A;
+      font-size: 0.875rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-family: $font-stack;
 
-form{
-    display:flex;
-    flex-direction: column;
-    gap:0.5rem;
-}
+      &:hover {
+        box-shadow: 0 4px 15px $accent-glow;
+        opacity: 0.95;
+      }
 
-.input-group{
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .input-group {
     display: flex;
     flex-direction: column;
-
     gap: 0.5rem;
 
-    input{
-        border: none;
-        outline: none;
-        padding-inline: 1rem;
-        padding-block: 0.75rem;
-        border-radius: 0.75rem;
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: $text-primary;
     }
 
-    
+    input {
+      border: 1px solid $border-color;
+      outline: none;
+      padding-inline: 1rem;
+      padding-block: 0.75rem;
+      border-radius: 10px;
+      background-color: $bg-input;
+      color: $text-primary;
+      font-family: $font-stack;
+      font-size: 0.875rem;
+      transition: all 0.2s ease-in-out;
 
+      &::placeholder {
+        color: $text-muted;
+      }
 
-}
-
-a{
-        color:#e90a76;
-        text-decoration: none;
+      &:focus {
+        border-color: $accent;
+        box-shadow: 0 0 0 3px $accent-glow;
+        background-color: rgba(15, 23, 42, 0.95);
+      }
     }
+  }
 
+  a {
+    color: $accent;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
 
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+  }
 }
