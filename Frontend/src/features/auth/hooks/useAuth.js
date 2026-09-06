@@ -34,8 +34,10 @@ export const useAuth = () => {
         try{
             const data = await register({username,email,password})
             setuser(data.user)
+            return data
         }catch(error){
             console.error("Error occurred while registering:", error)
+            return null
         }finally{
             setloading(false)
         }

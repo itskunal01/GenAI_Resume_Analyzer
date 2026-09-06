@@ -9,13 +9,19 @@ const Register = () => {
         const [username, setusername] = useState("")
         const [email, setEmail] = useState("")
         const [password, setPassword] = useState("")
+        const [error, setError] = useState("")
 
         const {loading,handleRegister} = useAuth()
 
         const handleSubmit = async (e)=>{
         e.preventDefault()
-        await handleRegister(username,email,password)
-        navigate("/")
+        setError("")
+        const data = await handleRegister(username,email,password)
+        if (data) {
+            navigate("/")
+        } else {
+            setError("Registration failed. The username or email may already exist.")
+        }
     }
 
     
@@ -30,6 +36,8 @@ const Register = () => {
     <main>
         <div className="form-container">
             <h1>Register</h1>
+
+            {error && <p role="alert">{error}</p>}
 
             <form onSubmit={handleSubmit}>
 
