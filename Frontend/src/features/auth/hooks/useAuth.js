@@ -19,8 +19,10 @@ export const useAuth = () => {
         try{
             const data = await login({email,password})
             setuser(data.user)
+            return data
         }catch(error){
             console.error("Error occurred while logging in:", error)
+            return null
         }finally{
             setloading(false)
         } 
